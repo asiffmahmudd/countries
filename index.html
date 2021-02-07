@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Countries</title>
+  </head>
+  <body style="background-color: rgb(238, 234, 234);">
+    <div id="country-detail" class="container" style="display:none">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5 text-center">
+                <h1>Country Detail</h1>
+                <div>
+                    <img class="m-3 img-fluid" style="height:90px; width:200px" id="flag" alt="flag">
+                </div>
+                <div>
+                    <strong>Country Name:</strong> <span id="name"></span>
+                </div>
+                <div>
+                    <strong>Population:</strong> <span id="population"></span>
+                </div>
+                <div>
+                    <strong>Region:</strong> <span id="region"></span>
+                </div>
+                <div>
+                    <strong>Timezone:</strong> <span id="time"></span>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto mt-5 text-center">
+                <h1>List of countries</h1>
+                <table id="table" class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Capital</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tb-body">
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+  <script src="script.js"></script>
+</html>
