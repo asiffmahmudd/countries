@@ -23,9 +23,6 @@ function displayData(data){
     for(x in data){
         let row = table.insertRow(x);
         
-        row.setAttribute('class', 'clickable-row');
-        row.setAttribute('data-href', '#country-detail');
-        
         let cell1 = createCell('th', (parseInt(x)+1));
         cell1.setAttribute('scope', 'row');
 
@@ -33,35 +30,35 @@ function displayData(data){
 
         let cell3 = createCell('td', data[x].capital);
 
-        let link = document.createElement('a');
-        link.setAttribute('href', '#country-detail');
-        addAll(row, cell1,cell2,cell3);
+        let cell4 = createCell('button', 'Details');
+        cell4.setAttribute('class', 'btn btn-dark mt-1');
+        cell4.setAttribute('onclick', `addAction("${data[x].name}")`);
+
+        addAll(row, cell1,cell2,cell3, cell4);
         tableBody.appendChild(row);
     }
-    addAction(data);
 }
 
 function detailViewer(country){
+    
     console.log(country);
 
-    document.getElementById('flag').setAttribute('src', country.flag);
-    document.getElementById('name').textContent = country.name;
-    document.getElementById('population').textContent = country.population;
-    document.getElementById('region').textContent = country.region;
-    document.getElementById('time').textContent = country.timezones;
+    document.getElementById('flag').setAttribute('src', country[0].flag);
+    document.getElementById('name').textContent = country[0].name;
+    document.getElementById('population').textContent = country[0].population;
+    document.getElementById('region').textContent = country[0].region;
+    document.getElementById('time').textContent = country[0].timezones;
 
     document.getElementById('country-detail').style.display = "block";
     document.getElementById('country-detail').scrollIntoView();
     
 }
 
-function addAction(data){
-    let table = document.querySelectorAll('#table tr');
-    for(let i = 1; i < table.length; i++){
-        table[i].addEventListener("click", function(){
-            detailViewer(data[i-1]);
-        });
-    }
+function addAction(name){
+    const url = `https://restcountries.eu/rest/v2/name/${name}`;
+    fetch(url)
+    .then(response => response.json())
+    .then(data => detailViewer(data));
 }
 
 getData();
