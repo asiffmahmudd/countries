@@ -1,8 +1,11 @@
 
 function getData(){
-    fetch('https://restcountries.eu/rest/v2/all')
+    fetch('https://restcountries.com/v3.1/all')
     .then(response => response.json())
-    .then(data => displayData(data));
+    .then(data => {
+        console.log(data)
+        displayData(data)
+    });
 }
 
 function createCell(type, value){
@@ -26,13 +29,13 @@ function displayData(data){
         let cell1 = createCell('th', (parseInt(x)+1));
         cell1.setAttribute('scope', 'row');
 
-        let cell2 = createCell('td', data[x].name);
+        let cell2 = createCell('td', data[x].name.common);
 
         let cell3 = createCell('td', data[x].capital);
 
         let cell4 = createCell('button', 'Details');
         cell4.setAttribute('class', 'btn btn-dark mt-1');
-        cell4.setAttribute('onclick', `addAction("${data[x].name}")`);
+        cell4.setAttribute('onclick', `addAction("${data[x].name.common}")`);
 
         addAll(row, cell1,cell2,cell3, cell4);
         tableBody.appendChild(row);
@@ -43,8 +46,8 @@ function detailViewer(country){
     
     console.log(country);
 
-    document.getElementById('flag').setAttribute('src', country[0].flag);
-    document.getElementById('name').textContent = country[0].name;
+    document.getElementById('flag').setAttribute('src', country[0].flags.png);
+    document.getElementById('name').textContent = country[0].name.common;
     document.getElementById('population').textContent = country[0].population;
     document.getElementById('region').textContent = country[0].region;
     document.getElementById('time').textContent = country[0].timezones;
@@ -55,7 +58,7 @@ function detailViewer(country){
 }
 
 function addAction(name){
-    const url = `https://restcountries.eu/rest/v2/name/${name}`;
+    const url = `https://restcountries.com/v3.1/name/${name}`;
     fetch(url)
     .then(response => response.json())
     .then(data => detailViewer(data));
